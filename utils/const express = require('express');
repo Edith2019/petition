@@ -1,0 +1,136 @@
+const express = require('express');
+const app = express();
+const db = require('./db');
+// const cookieParser = require('cookie-parser');
+const hb = require('express-handlebars');
+var cookieSession = require('cookie-session');
+// const querystring = require('querystring');
+// app.use(express.static('./projects'));
+const csurf = require('csurf');
+const secrets = require('./secrets');
+
+app.use(express.static('./public'));
+
+app.engine('handlebars', hb());
+app.set('view engine', 'handlebars'); // makes a bug
+
+app.use((req, res, next) => {
+    res.set('x-frame-options', 'DENY');
+    res.locals.csrfToken = req.csrfToken;
+    next();
+});
+
+app.use(cookieSession({
+    secret: secrets.cookieSession.secret,
+    maxAge: 1000 * 60 * 60 * 24 * 14
+}));
+app.use(
+    express.urlencoded({
+        extended: false
+    })
+);
+
+app.use((req, res, next) => {
+
+    if (req.session.sigId && req.url === '/petition') {
+
+        console.log('redirect to petition/thankyou');
+        res.redirect('/petition/thankyou');
+    } else if (!req.session.sigId && req.url === '/petition/thankyou') {
+
+        console.log('petition not signed');
+        res.redirect('/petition');
+
+    } else {
+        next();
+    }
+});
+
+
+app.get('/petition', (req, res) => {
+
+    res.render('petition', {
+        layout: 'main',
+        title: 'petition',
+    });
+
+});
+
+
+app.post('/petition', (req, res) => {
+    // if (req.session.sigId) {
+    //     return res.redirect('/thankyou');
+    // }
+    console.log("post petition");
+    const first = req.body['first'];
+    const last = req.body['last'];
+    const signature = req.body['sig'];
+    console.log("signature", signature);
+
+    db.addPetition(first, last, signature
+    ).then(result => {
+        console.log("results", result);
+        req.session.sigId = result.rows[0].id; //set cookie
+        res.redirect('/petition/thankyou');
+    })
+        .catch(err => {
+            console.log('error in signature', err);
+            res.render('petition', {
+                layout: 'main',
+                title: 'petition',
+                err: true,
+            });
+
+        });
+
+});
+
+app.get('/petition/thankyou', (req, res) => {
+    console.log("thank you get route");
+    // if (!req.session.sigId) {
+    //     return res.redirect('/petition');
+    // }
+    // when user sign, get the id to the user that sign and attached it to request.session
+
+    db.getSignerSignature(
+        req.session.sigId
+        // req.session.id;
+    ).then(result => {
+        // console.log(result)
+        // if there, databse query to 
+
+        // get user signature ID
+        res.render('thankyou', {
+            layout: 'main',
+            sigDb: result.rows[0].signature,
+            title: 'thankyou'
+        });
+    }).catch(err => {
+        console.log('there is an error with signature render', err);
+    });
+});
+
+app.get('/petition/signers', (req, res) => {
+
+
+    db.getSignatures().then(result => {
+        const signatures = result.rows;
+        res.render('signers', {
+            layout: 'main',
+            title: 'signers',
+            signatures
+        });
+    }).catch(err => {
+
+        console.log("there is an error in signature", err);
+
+    });
+    //get the first and last of every signer from the database and pass them to signers.handlebars
+});
+
+
+
+
+app.use(csurf());
+
+app.listen('8080', () => console.log("Petition, Go Go Go Edith !!!!"));

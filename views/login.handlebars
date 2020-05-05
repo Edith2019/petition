@@ -1,0 +1,20 @@
+<div class="menuHome">
+<a class="buttonMenu" style="text-decoration:none" href="/register"> register</a>
+</div>
+
+<div class="login">
+{{#if err}}
+<h1>login error, please try again!</h1>
+{{/if}}
+
+<h1 class="h1Log"> please enter your login </h1>
+<div class="formLog">
+<form method="POST">
+    <input id="inputLog" type="email" name="loginEmail" placeholder="email">
+    <input  id="inputLog" type="password" name="loginpw" placeholder="password">
+    </class>
+    <button name="buttonlog" > login </button>
+</form>
+</div>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="script.js"></script>

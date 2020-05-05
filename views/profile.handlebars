@@ -1,0 +1,21 @@
+<div class="menuHome">
+
+</div>
+<div class="profile">
+
+{{#if err}}
+<h1 class="h1Pro">profile error, please try again !</h1>
+{{else}}
+ <h1 class="h1Pro"> please enter your profile information !</h1>
+{{/if}} 
+<div class="formPro">
+    <form method="POST">
+        <input id= "inputPro" type="text" name="age" placeholder="age">
+        <input id= "inputPro" name="city" placeholder="city">
+        <input id= "inputPro" type="url" name="url" placeholder="page">
+    </div>
+    <button class="buttonPro" name="buttonPro" > submit </button>
+</form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="script.js"></script>

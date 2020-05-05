@@ -1,0 +1,31 @@
+<div class="menuHome">
+<a class="buttonMenu" style="text-decoration:none" href="/petition/thankyou"> go to signature</a>
+<a class="buttonMenu" name="logout" style="text-decoration:none" href="/logout"> logout</a>
+</div>
+<div class =  "edit">
+
+<h1 class="h1edit">my profile </h1>
+<div class="formEd">
+<form method="POST">
+    <p>first name 🌿</p>
+    <input id= "inputEd" type="text" name="first" value="{{first}}" id="editFirst">
+    <p>last name 🌿</p>
+    <input id= "inputEd" type="text" name="last" value="{{last}}" id="editLast">
+    <p>password 🌿</p>
+    <input id= "inputEd" type="password" name="pw" value="" id="editPW">
+    <p>email 🌿</p>
+    <input id= "inputEd" type="email" name="email" value="{{email}}" id="editEmail">
+    <p>age 🌿</p>
+    <input id= "inputEd" type="text" name="age" value="{{age}}" id="editAge">
+    <p>city 🌿</p>
+    <input id= "inputEd" type="text" name="city" value="{{city}}" id="editCity">
+    <p>url 🌿</p>
+    <input id= "inputEd" type="url" name="url" value="{{url}}" id="editUrl">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+</div>
+
+<button class="buttonEdit" name="buttonEdit"> submit changes</button>
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+ <script src="script.js"></script>
+</div>

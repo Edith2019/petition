@@ -1,0 +1,23 @@
+<div class="menuHome">
+</div>
+<div class="register">
+
+{{#if err}}
+<h1 class="h1Reg">registration error, please try again !</h1>
+{{else}}
+ <h1 class="h1Reg"> please register to sign the petition !</h1>
+{{/if}}
+  
+   <div class="formReg">
+<form  method="POST">
+    <input id= "inputReg" type="text" name="first" placeholder="first name">
+    <input id= "inputReg" type="text" name="last" placeholder="last name">
+    <input id= "inputReg" type="email" name="email" placeholder="email">
+    <input id= "inputReg" type="password" name="pwreg" placeholder="password">
+    </div>
+<button name="buttonReg" class="buttonReg" > register now </button>
+</form>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="script.js"></script>

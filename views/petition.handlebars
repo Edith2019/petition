@@ -1,0 +1,29 @@
+<div class="menuHome">
+<a class="buttonMenu" style="text-decoration:none" href="/edit"> go to profile</a>
+<a class="buttonMenu" name="logout" style="text-decoration:none" href="/logout"> logout</a>
+</div>
+<div class="petition">
+<img class="imagePet" src="Tempelhof.png" />
+{{#if err}}
+<h1 class="h1Pro">signature error, please try again !</h1>
+{{else}}
+ <h1 class="h1Pro"> please sign the petition !</h1>
+{{/if}}
+
+        <div class="formPet">
+            <form method="POST">
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                <input name="sig" type="hidden" id="sig">
+                 </div>
+                <canvas class="canvas" id="canvas" width="300" height="100" >
+                </canvas>
+                
+                <button class="button">submit</button>
+           </form>
+        </div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="script.js"></script>
+     
+        
+       
+        

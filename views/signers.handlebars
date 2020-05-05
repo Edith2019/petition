@@ -1,0 +1,20 @@
+<div class="menuHome">
+<a class="buttonMenu" style="text-decoration:none" href="/edit"> go to profile</a>
+<a class="buttonMenu" name="logout"style="text-decoration:none" href="/logout"> logout</a>
+</div>
+<div class="signers">
+    <h1 class="h1Signers"> here is the list of the gardening guerilla...</h1>
+    <ul class="signerList">
+   {{#signatures}}
+  <p id= "signersName">   {{first}}
+          {{last}} 
+          {{age}} 
+          <a id= "signersName" class="signersLinkCity" href = "/petition/signers/{{city}} ">{{city}}</a>
+          <a id= "signersName" class="signersLinkCity" href = "{{url}}"> {{url}} </a> 
+   <p id="line"> -----    🌱 ----- </p></p> 
+   {{/signatures}}
+
+</ul>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="script.js"></script>

@@ -1,0 +1,22 @@
+<div class="menuHome">
+<a class="buttonMenu" style="text-decoration:none" href="/edit"> go to profile</a>
+<a class="buttonMenu" name="logout" style="text-decoration:none" href="/logout"> logout</a>
+</div>
+<div class="thankyou">
+<h2 class="h2Thank"> thank you for signing the petition 🌸 </h2>
+
+<p>see all the</p> <p class="count"> {{sigCount}} </p> <p>gardener fighters <a id="linkSig" class="h2Thank" href="/petition/signers">HERE</a>...</p>
+
+{{#if sigDb}}
+
+<img class="imageThank" src="{{sigDb}}" alt="">
+
+{{/if}}
+
+        <form method="POST">
+                 <button class="buttonDelete"> delete signature</button>
+                <a class="buttonPro" style="text-decoration:none"  href="/edit"> go to Profile</a>
+        </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="script.js"></script>

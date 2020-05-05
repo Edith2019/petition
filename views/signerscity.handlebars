@@ -1,0 +1,20 @@
+<div class="menuHome">
+<a class="buttonMenu" style="text-decoration:none" href="/edit"> go to profile</a>
+<a class="buttonMenu" name="logout" style="text-decoration:none" href="/logout"> logout</a>
+</div>
+
+<div class="signerscity">
+    <h1 class="h1Signers"> here is the list of your local gardening guerilla...</h1>
+    <ul class="signerList">
+
+{{#cityData}}
+ 
+<p>{{first}} {{last}} {{age}} {{url}}
+ <p id="line"> -----    🌱 ----- </p>
+ </p>
+
+{{/cityData}}
+
+</ul>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
