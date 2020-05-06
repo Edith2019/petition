@@ -13,3 +13,6 @@ express// node.js// express-handlebars// postgreSQL// JavaScript// jQuery// HTML
 
 # Description
 the idea behind this project is to create an online petition that visitors can sign to make their voice heard on an issue that they identify with.
+
+# Demo
+<img src="https://github.com/Edith2019/petition/blob/master/petitionDemo.gif" style="max-width:100%;">
